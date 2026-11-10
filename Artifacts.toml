@@ -12,3 +12,19 @@
 #  Until the entries exist, models_dir() and example_data_dir() tell you so
 #  and you can use your own copies (DASight_MODELS_DIR / DASight_DATA_DIR).
 # ================================================================
+
+[DASight_example_data]
+git-tree-sha1 = "0ae135bcd1eb270b672516197b34925af4a85afd"
+lazy = true
+
+    [[DASight_example_data.download]]
+    sha256 = "0b37214ffc79cd8a0bd1a50c38549b3944b28aae9cd8cc8ee2b5bc44ac502804"
+    url = "https://zenodo.org/records/24109156/files/DASight_example_data.tar.gz?download=1"
+
+[DASight_models]
+git-tree-sha1 = "35b3cd6bc5e9ec7c74a020cd1bbb6816da2b0227"
+lazy = true
+
+    [[DASight_models.download]]
+    sha256 = "24d316431d9c76623b545f9ff8dd20c2098ec1635e508051d457cb7977d57809"
+    url = "https://zenodo.org/records/24109156/files/DASight_models.tar.gz?download=1"
