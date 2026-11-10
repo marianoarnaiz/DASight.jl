@@ -43,7 +43,7 @@ preserving the recordings that matter.
 
 ```mermaid
 flowchart LR
-    A["**DAS files**<br/>.nc · .jld2 · your format"] --> B["PAINTER<br/>filter · FK blur<br/>224×224 picture"]
+    A["DAS files<br/>.nc · .jld2 · your format"] --> B["PAINTER<br/>filter · FK blur<br/>224×224 picture"]
     B --> C["DETECTIVE<br/>ZEUS + POSEIDON + HADES<br/>3-stage vote"]
     C --> D{event?}
     D -- signal --> E[("SIGNALS<br/>always kept")]
