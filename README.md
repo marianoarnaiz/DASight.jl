@@ -30,10 +30,10 @@ neural networks (ResNets) classify the picture as **signal** or **noise**. No pi
 localisation, no magnitudes: a featherweight screening tool that reduces data volume while
 preserving the recordings that matter.
 
-- 📡 **Live monitoring**: screen files as the acquisition system writes them.
-- 🗄️ **Archives**: find the event-containing files in old data sets.
-- 🔌 **Easy to plug in**: file-based, with simple shell launchers and a plain Julia API.
-- 🧱 Built on [DASvader.jl](https://github.com/marianoarnaiz/DASvader.jl), IPGP's open-source
+- **Live monitoring**: screen files as the acquisition system writes them.
+- **Archives**: find the event-containing files in old data sets.
+- **Easy to plug in**: file-based, with simple shell launchers and a plain Julia API.
+- Built on [DASvader.jl](https://github.com/marianoarnaiz/DASvader.jl), IPGP's open-source
   Julia package for DAS data handling and signal processing.
 
 > DASight was created as part of the TRANSFORM² project. It was previously distributed as
@@ -43,8 +43,8 @@ preserving the recordings that matter.
 
 ```mermaid
 flowchart LR
-    A["DAS files<br/>.nc · .jld2 · your format"] --> B["① PAINTER<br/>filter · FK blur<br/>224×224 picture"]
-    B --> C["② DETECTIVE<br/>ZEUS + POSEIDON + HADES<br/>3-stage vote"]
+    A["DAS files<br/>.nc · .jld2 · your format"] --> B["PAINTER<br/>filter · FK blur<br/>224×224 picture"]
+    B --> C["DETECTIVE<br/>ZEUS + POSEIDON + HADES<br/>3-stage vote"]
     C --> D{event?}
     D -- signal --> E[("SIGNALS<br/>always kept")]
     D -- noise --> F[("NOISE<br/>keep 1 of N, or delete")]
@@ -52,9 +52,9 @@ flowchart LR
 
 | Step | What it does | Example folder |
 |:--|:--|:--|
-| **① PAINTER** | Reads your data and paints a picture of each file: removes mean/trend, normalises channels, band-passes around the dominant low-frequency band, blurs with an FK-peak-sized Gaussian, and renders a `RdBu` heatmap with automatic contrast. | `1_PAINTER` |
-| **② DETECTIVE** | Classifies a folder of pictures with three trained networks (**ZEUS**, **POSEIDON**, **HADES**) and combines them with a 3-stage weighted vote. Writes lists of signal and noise files. | `2_DETECTIVE` |
-| **③ WATCHER** | Does ① and ② continuously on a folder that receives live data, keeps signal files, and applies *your* noise policy (keep all, keep 1 in 10, keep 1 in 100, or none). | `3_WATCHER` |
+| **1 PAINTER** | Reads your data and paints a picture of each file: removes mean/trend, normalises channels, band-passes around the dominant low-frequency band, blurs with an FK-peak-sized Gaussian, and renders a `RdBu` heatmap with automatic contrast. | `1_PAINTER` |
+| **2 DETECTIVE** | Classifies a folder of pictures with three trained networks (**ZEUS**, **POSEIDON**, **HADES**) and combines them with a 3-stage weighted vote. Writes lists of signal and noise files. | `2_DETECTIVE` |
+| **3 WATCHER** | Does 1 and 1 continuously on a folder that receives live data, keeps signal files, and applies *your* noise policy (keep all, keep 1 in 10, keep 1 in 100, or none). | `3_WATCHER` |
 
 ## Installation
 
@@ -106,7 +106,7 @@ The launchers look for DASight in the `@DASight` environment from step 2; to use
 
 ## The three examples
 
-### ① PAINTER: learn to get your data in
+### 1 PAINTER: learn to get your data in
 
 ```bash
 ./run_painter.sh /path/to/folder_with_nc_files [output_folder] [--keep-originals]
@@ -116,7 +116,7 @@ Writes one `<name>_RdBu_0_AUTO.png` per file. Open `DAS2Pics_nc.jl` and edit the
 block at the top (the names of the variables in your files). The script is short and commented on
 purpose: it is the place to learn how a data file becomes a DAS object in Julia.
 
-### ② DETECTIVE: find events in a set of pictures
+### 2 DETECTIVE: find events in a set of pictures
 
 ```bash
 ./run_detective.sh image_folder [output_folder] [models_folder]
@@ -162,7 +162,7 @@ decision is appended to `watcher.log`. The models are loaded once and stay in me
 Other options: `--keep-pics` (keep the `_AUTO` pictures in `PICS/`), `--models DIR`, `--once`
 (process what is waiting and exit). The 1-in-N count continues across restarts.
 
-> ⚠️ With `--keep-noise` other than `1`, data is **permanently deleted**. Try it on a copy first.
+> WARNING: With `--keep-noise` other than `1`, data is **permanently deleted**. Try it on a copy first.
 
 ## Using your own data
 
