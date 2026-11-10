@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo-DASight.png" alt="DASight logo" width="360">
+  <img src="logo-DASight.png" alt="DASight logo" width="360">
 </p>
 
 <h1 align="center">DASight.jl</h1>
