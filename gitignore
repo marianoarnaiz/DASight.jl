@@ -1,0 +1,24 @@
+# Julia
+Manifest.toml
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+
+# big or generated files never go into git (models and data live on Zenodo)
+*.bson
+*.jld2
+*.nc
+*.h5
+*.tar.gz
+DASsight_pics/
+DASsight_results/
+DAS_RECORDING/
+data_test/
+Fake_DAS/
+
+# macOS
+.DS_Store
+._*
+
+# packed artifacts made by scripts/make_artifact.jl
+dist/
