@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use DASight in your work, please cite it as below."
+title: "DASight: visual machine learning applied to DAS data classification"
+type: software
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/marianoarnaiz/DASight.jl"
+authors:
+  - family-names: "Arnaiz-Rodríguez"
+    given-names: "Mariano S."
+    affiliation: "Université Paris Cité, Institut de physique du globe de Paris, CNRS, F-75005 Paris, France"
+  - family-names: "Satriano"
+    given-names: "Claudio"
+    affiliation: "Université Paris Cité, Institut de physique du globe de Paris, CNRS, F-75005 Paris, France"
+# After the first release add:
+#   date-released: YYYY-MM-DD
+#   doi: 10.5281/zenodo.XXXXXXX     (the Zenodo DOI of the code release)

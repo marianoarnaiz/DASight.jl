@@ -1,0 +1,14 @@
+# ================================================================
+#  DASight :: Artifacts.toml
+#
+#  Large files hosted outside git (on Zenodo). Julia downloads them the
+#  first time they are needed and checks them against the checksums below.
+#  Do NOT edit by hand: scripts/make_artifact.jl writes the entries.
+#
+#  Expected entries:
+#     DASight_models        ZEUS.bson, POSEIDON.bson, HADES.bson (top level of the artifact)
+#     DASight_example_data  data_test/ (.nc files) and Fake_DAS/ (1.jld2 ... 12.jld2)
+#
+#  Until the entries exist, models_dir() and example_data_dir() tell you so
+#  and you can use your own copies (DASight_MODELS_DIR / DASight_DATA_DIR).
+# ================================================================
