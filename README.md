@@ -134,7 +134,7 @@ Writes, in the output folder (`<tag>` is the name of the image folder):
 
 Thresholds and model weights are in the settings block of `Pics2Events.jl`.
 
-### ③ WATCHER: live classification
+### 3 WATCHER: live classification
 
 Use two terminals. In the first, simulate an instrument (it copies a file into `DAS_RECORDING` every 10 s):
 
