@@ -30,10 +30,10 @@ neural networks (ResNets) classify the picture as **signal** or **noise**. No pi
 localisation, no magnitudes: a featherweight screening tool that reduces data volume while
 preserving the recordings that matter.
 
-- 📡 **Live monitoring**: screen files as the acquisition system writes them.
-- 🗄️ **Archives**: find the event-containing files in old data sets.
-- 🔌 **Easy to plug in**: file-based, with simple shell launchers and a plain Julia API.
-- 🧱 Built on [DASvader.jl](https://github.com/marianoarnaiz/DASvader.jl), IPGP's open-source
+- **Live monitoring**: screen files as the acquisition system writes them.
+- **Archives**: find the event-containing files in old data sets.
+- **Easy to plug in**: file-based, with simple shell launchers and a plain Julia API.
+- Built on [DASvader.jl](https://github.com/marianoarnaiz/DASvader.jl), IPGP's open-source
   Julia package for DAS data handling and signal processing.
 
 > DASight was created as part of the TRANSFORM² project. It was previously distributed as
@@ -52,9 +52,9 @@ flowchart LR
 
 | Step | What it does | Example folder |
 |:--|:--|:--|
-| **① PAINTER** | Reads your data and paints a picture of each file: removes mean/trend, normalises channels, band-passes around the dominant low-frequency band, blurs with an FK-peak-sized Gaussian, and renders a `RdBu` heatmap with automatic contrast. | `1_PAINTER` |
-| **② DETECTIVE** | Classifies a folder of pictures with three trained networks (**ZEUS**, **POSEIDON**, **HADES**) and combines them with a 3-stage weighted vote. Writes lists of signal and noise files. | `2_DETECTIVE` |
-| **③ WATCHER** | Does ① and ② continuously on a folder that receives live data, keeps signal files, and applies *your* noise policy (keep all, keep 1 in 10, keep 1 in 100, or none). | `3_WATCHER` |
+| **1. PAINTER** | Reads your data and paints a picture of each file: removes mean/trend, normalises channels, band-passes around the dominant low-frequency band, blurs with an FK-peak-sized Gaussian, and renders a `RdBu` heatmap with automatic contrast. | `1_PAINTER` |
+| **2. DETECTIVE** | Classifies a folder of pictures with three trained networks (**ZEUS**, **POSEIDON**, **HADES**) and combines them with a 3-stage weighted vote. Writes lists of signal and noise files. | `2_DETECTIVE` |
+| **3. WATCHER** | Does 1 and 2 continuously on a folder that receives live data, keeps signal files, and applies *your* noise policy (keep all, keep 1 in 10, keep 1 in 100, or none). | `3_WATCHER` |
 
 ## Installation
 
@@ -77,7 +77,7 @@ add https://github.com/anowacki/Geodesics.jl https://github.com/anowacki/Seis.jl
 
 All four are given in one command because DASvader and its dependencies are not (yet) in Julia's
 General registry. The machine-learning packages that must be pinned to specific versions
-(Flux 0.14.25, Metalhead 0.9.5, MLUtils 0.4.5) are handled for you. The first install and the
+(Flux 0.14.25, Metalhead 0.9.5, MLUtils 0.4.5) are handled for you (we are working on this). The first install and the
 first `using DASight` take a while: Julia is compiling a large plotting and ML stack.
 
 **3. Get the examples.** Back in the normal Julia prompt (press backspace to leave package mode):
@@ -106,7 +106,7 @@ The launchers look for DASight in the `@DASight` environment from step 2; to use
 
 ## The three examples
 
-### ① PAINTER: learn to get your data in
+### 1. PAINTER: learn to get your data in
 
 ```bash
 ./run_painter.sh /path/to/folder_with_nc_files [output_folder] [--keep-originals]
@@ -116,7 +116,7 @@ Writes one `<name>_RdBu_0_AUTO.png` per file. Open `DAS2Pics_nc.jl` and edit the
 block at the top (the names of the variables in your files). The script is short and commented on
 purpose: it is the place to learn how a data file becomes a DAS object in Julia.
 
-### ② DETECTIVE: find events in a set of pictures
+### 2. DETECTIVE: find events in a set of pictures
 
 ```bash
 ./run_detective.sh image_folder [output_folder] [models_folder]
@@ -134,7 +134,7 @@ Writes, in the output folder (`<tag>` is the name of the image folder):
 
 Thresholds and model weights are in the settings block of `Pics2Events.jl`.
 
-### ③ WATCHER: live classification
+### 3. WATCHER: live classification
 
 Use two terminals. In the first, simulate an instrument (it copies a file into `DAS_RECORDING` every 10 s):
 
@@ -162,7 +162,7 @@ decision is appended to `watcher.log`. The models are loaded once and stay in me
 Other options: `--keep-pics` (keep the `_AUTO` pictures in `PICS/`), `--models DIR`, `--once`
 (process what is waiting and exit). The 1-in-N count continues across restarts.
 
-> ⚠️ With `--keep-noise` other than `1`, data is **permanently deleted**. Try it on a copy first.
+> WARNING: With `--keep-noise` other than `1`, data is **permanently deleted**. Try it on a copy first.
 
 ## Using your own data
 
