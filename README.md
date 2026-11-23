@@ -232,6 +232,8 @@ Issues and suggestions are welcome.
 
 If you use DASight, please cite it (see [`CITATION.cff`](CITATION.cff); GitHub's *Cite this repository* button uses it).
 
+[![DOI](https://zenodo.org/badge/1452415479.svg)](https://doi.org/10.5281/zenodo.24460745)
+
 ## Authors
 
 **Mariano S. Arnaiz-Rodríguez** and **Claudio Satriano**
