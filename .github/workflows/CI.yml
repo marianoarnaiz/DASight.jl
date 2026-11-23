@@ -6,7 +6,9 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore: ['**.md', 'assets/**', 'LICENSE', '*.png', '*.pdf']
   pull_request:
+    paths-ignore: ['**.md', 'assets/**', 'LICENSE', '*.png', '*.pdf']
 
 jobs:
   test:
