@@ -11,9 +11,12 @@
 
 <p align="center">
   <a href="https://github.com/marianoarnaiz/DASight.jl/actions/workflows/CI.yml"><img src="https://github.com/marianoarnaiz/DASight.jl/actions/workflows/CI.yml/badge.svg" alt="CI"></a>
+  <a href="https://doi.org/10.5281/zenodo.24460745"><img src="https://zenodo.org/badge/1452415479.svg" alt="DOI"></a>
   <img src="https://img.shields.io/badge/Julia-%E2%89%A5%201.10-9558B2?logo=julia&logoColor=white" alt="Julia ≥ 1.10">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="macOS | Linux">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
+</p>
+
 </p>
 
 ---
@@ -231,8 +234,6 @@ Issues and suggestions are welcome.
 ## Citation
 
 If you use DASight, please cite it (see [`CITATION.cff`](CITATION.cff); GitHub's *Cite this repository* button uses it).
-
-[![DOI](https://zenodo.org/badge/1452415479.svg)](https://doi.org/10.5281/zenodo.24460745)
 
 ## Authors
 
