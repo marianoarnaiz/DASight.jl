@@ -84,9 +84,11 @@ end
 
 @testset "check_das" begin
     @test check_das(synthetic_das(); verbose=false)
-    # transposed data must be flagged
+    # transposed data must be flagged: the matrix is nx × nt and the axes follow it
     d = synthetic_das()
-    bad = iDAS(Matrix(permutedims(d.data)), d.time[1:64], d.htime[1:64], d.offset[1:6000], d.atrib, "bad")
+    nt, nx = size(d.data)
+    bad = iDAS(Matrix(permutedims(d.data)), d.time[1:nx], d.htime[1:nx],
+               range(0.0, step=10.0, length=nt), d.atrib, "bad")
     @test_logs (:warn,) match_mode=:any check_das(bad; verbose=false)
 end
 
